@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app="GroceryApp">
+  <head>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Grocery List</h1>
+      <p>Create your own grocery list below! We have gone ahead and added items to make a great breakfast! If you dont like breakfast, go ahead and delete those items off of your list and check off items as you shop.</p>
+      <div ng-controller="GroceryController">
+        <span>{{remaining()}} of {{items.length}} Items Remaining</span>
+        [ <a href="" ng-click="delete()">Delete</a>]
+        <ul>
+          <li ng-repeat="item in items">
+            <input type="checkbox" ng-model="item.done">
+            <span class="done-{{item.done}}">{{item.text}}</span>
+          </li>
+        </ul>
+        <form ng-submit="addItem()">
+          <input type="text" ng-model="itemText" placeholder="Add Another Item" class="item-input" required>
+          <input id="add-button" type="submit" value="Add">
+        </form>
+        <br>
+        <span>{{remaining()}} of {{items.length}} Items Remaining</span>
+        [ <a href="" ng-click="delete()">Delete</a>]
+      </div>
+    </div>
+  </body>
+</html>
